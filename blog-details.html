@@ -14,26 +14,20 @@
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-    <!-- Custom Scripts -->
+    <!-- Your Custom Script -->
     <script src="assets/js/main.js"></script>
 
-    <!-- Favicon and Apple Touch Icon -->
-    <link rel="icon" href="assets/img/favicon.png">
-    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-
-    <!-- Fonts and Icons -->
+    <!-- External Stylesheets -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-
-    <!-- Vendor CSS -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <link href="assets/css/style.css" rel="stylesheet">
 
     <!-- Custom Styles -->
@@ -48,51 +42,78 @@
 </head>
 
 <body>
+     <!-- ======= Mobile nav toggle button ======= -->
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
 
     <!-- Header -->
     <header id="header">
-        <!-- Include your header content here if needed -->
-    </header>
+        <div class="d-flex flex-column">
+    
+          <div class="profile">
+            <img src="assets/img/pic3.jpeg" alt="" class="img-fluid rounded-circle">
+            <h1 class="text-dark"><a class="text-dark href="index.html">Dr Primus Ochieng</a></h1>
+            <div class="social-links mt-3 text-center">
+              <a href="https://web.facebook.com/profile.php?id=61553172440489" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="https://www.instagram.com/oncologistprimus/" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="https://www.linkedin.com/in/primus-ochieng-8385243b/?originalSubdomain=ke" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              <a href="https://www.tiktok.com/@user6261383368082" class="titok"><i class="bx bxl-tiktok"></i></a>
+    
+            </div>
+          </div>
+    
+          <nav id="navbar" class="nav-menu navbar">
+            <ul>
+              <li><a href="index.html"       class="nav-link text-dark scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+              <li><a href="book-appointment.html" class="nav-link text-dark scrollto active"><i class="bx bx-server"></i> <span>Book Appointment</span></a></li>
+          <li><a href="blogs.html" class="nav-link text-dark scrollto active"><i class="bx bx-book-content"></i> <span>Blogs & Articles</span></a></li>
+
+            </ul>
+          </nav><!-- .nav-menu -->
+        </div>
+      </header>
+      <main id="main">
+
 
     <!-- Blog Details Section -->
     <section id="blog-details-section" style="padding: 20px; margin-top: 20px; text-align: center;">
         <div class="container">
             <!-- Blog Details Content -->
             <div class="row">
+                <div style="background-color: #212431; color: #fff;border-radius: 30px;">
+
+                <h2 class= p-2 m-1" id="blogTitle"></h2>
+</div>
+                <div class="col-lg-2"></div>
+
                 <div class="col-lg-8">
                     <!-- Display Blog Details -->
-                    <h2 class="mb-4">${blog.title}</h2>
-                    <p class="text-muted">Published on ${blog.created_at}</p>
-                    <div class="mb-4">
-                        <!-- Blog Image or Video (adjust based on your data structure) -->
-                        ${isVideo(blog.image_or_video) ?
-                            `<video src="${blog.image_or_video}" class="img-fluid" alt="Blog Video" controls></video>` :
-                            `<img src="${blog.image_or_video}" class="img-fluid" alt="Blog Image">`
-                        }
-                    </div>
-                    <div>
-                        <!-- Blog Body -->
-                        <p>${blog.body}</p>
-                    </div>
+                    <br />
+                    <p class="text-muted" id="blogPublishedDate"></p>
+                    <div class="mb-4" id="blogMedia"></div>
+                    <div id="blogBody"></div>
                 </div>
-                <!-- Sidebar -->
-                <div class="col-lg-4">
-                    <!-- Customize the sidebar content as needed -->
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title">Sidebar Section</h5>
-                            <p class="card-text">Content for the sidebar goes here...</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="col-lg-2"></div>
+
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer id="footer">
-        <!-- Include your footer content here -->
-    </footer>
+        <div class="container">
+          <div class="copyright">
+            &copy; Copyright <strong><span>Intellima</span></strong>
+          </div>
+          <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/ -->
+          </div>
+        </div>
+      </footer><!-- End  Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -106,6 +127,79 @@
     <script src="assets/vendor/typed.js/typed.umd.js"></script>
     <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <script>
+        // Function to extract query parameters from the URL
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Function to check if the file is a video
+        function isVideo(filename) {
+            const videoExtensions = ['.mp4', '.webm', '.ogg', '.ogv', '.avi', '.mov', '.wmv', '.flv'];
+            const ext = filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
+            return videoExtensions.includes('.' + ext.toLowerCase());
+        }
+
+        // Function to update the UI with blog details
+        function updateUIWithBlogDetails(blog) {
+            // Update the title
+            $('#blogTitle').text(blog.title);
+
+            // Format and update the published date
+            const publishedDate = new Date(blog.created_at);
+            const formattedDate = publishedDate.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            $('#blogPublishedDate').text('Published on ' + formattedDate);
+
+            // Update the media (image or video)
+            const mediaElement = isVideo(blog.image_or_video) ?
+                '<video src="' + blog.image_or_video + '" class="img-fluid" alt="Blog Video" controls></video>' :
+                '<img src="' + blog.image_or_video + '" class="img-fluid" alt="Blog Image">';
+            $('#blogMedia').html(mediaElement);
+
+            // Update the body
+            $('#blogBody').html('<p>' + blog.body + '</p>');
+        }
+
+        // Function to fetch blog details
+        function fetchBlogDetails(blogId) {
+            $.ajax({
+                url: 'https://primus.pythonanywhere.com/api/blogs/' + blogId + '/',
+                type: 'GET',
+                success: function (blog) {
+                    console.log('Fetched blog details:', blog);
+                    updateUIWithBlogDetails(blog);
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error fetching blog details:', error);
+                    // Optionally display an error message to the user
+                }
+            });
+        }
+
+        // Document ready
+        $(document).ready(function () {
+            // Log when the document is ready
+            console.log('Document ready');
+
+            // Get the blog ID from the query parameters
+            const blogId = getParameterByName('id');
+            console.log('Blog ID:', blogId);
+
+            // Fetch and display blog details
+            fetchBlogDetails(blogId);
+        });
+    </script>
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>

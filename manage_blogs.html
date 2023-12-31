@@ -37,6 +37,64 @@
         margin-left: 300px; /* Adjust the margin for larger devices */
       }
     }
+
+    #feedback {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .success {
+      color: green;
+    }
+
+    .error {
+      color: red;
+    }
+
+    #payment-details {
+      background-color: #fff;
+      padding: 20px;
+      margin-top: 20px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #blog-form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    label {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    input,
+    textarea,
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
   </style>
 
 </head>
@@ -52,81 +110,77 @@
 
       <div class="profile">
         <img src="assets/img/pic3.jpeg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-dark"><a class="text-dark href="index.html">Dr Primus Ochieng</a></h1>
+        <h1 class="text-dark"><a class="text-dark" href="index.html">Dr Primus Ochieng</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="https://web.facebook.com/profile.php?id=61553172440489" class="facebook"><i class="bx bxl-facebook"></i></a>
           <a href="https://www.instagram.com/oncologistprimus/" class="instagram"><i class="bx bxl-instagram"></i></a>
           <a href="https://www.linkedin.com/in/primus-ochieng-8385243b/?originalSubdomain=ke" class="linkedin"><i class="bx bxl-linkedin"></i></a>
           <a href="https://www.tiktok.com/@user6261383368082" class="titok"><i class="bx bxl-tiktok"></i></a>
-
         </div>
       </div>
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
           <li><a href="index.html" class="nav-link text-dark scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          
         </ul>
-        
       </nav><!-- .nav-menu -->
     </div>
   </header><!-- End Header -->
 
-  
-
-  <section id="payment-details" style="background-color: #fff; padding: 20px; margin-top: 20px; text-align: center;">
+  <section id="payment-details">
     <form id="blog-form" enctype="multipart/form-data">
       <label for="title">Title:</label>
-      <input type="text" id="title" name="title" required><br>
+      <input type="text" id="title" name="title" required>
 
       <label for="body">Body:</label>
-      <textarea id="body" name="body" required></textarea><br>
+      <textarea id="body" name="body" required></textarea>
 
       <label for="details">Details:</label>
-      <textarea id="details" name="details" required></textarea><br>
+      <textarea id="details" name="details" required></textarea>
 
       <label for="image_or_video">Image/Video URL:</label>
-      <input type="file" id="image_or_video" name="image_or_video" accept="image/*, video/*" required><br>
+      <input type="file" id="image_or_video" name="image_or_video" accept="image/*, video/*" required>
 
       <button type="button" onclick="createBlog()">Create Blog</button>
     </form>
-  </section>
 
-  <!-- ... (remaining code) ... -->
+    <div id="feedback"></div>
+  </section>
 
   <script>
     function createBlog() {
-  var title = $('#title').val();
-  var body = $('#body').val();
-  var details = $('#details').val();
-  var image_or_video = $('#image_or_video')[0].files[0];  // Get the file data
+      var title = $('#title').val();
+      var body = $('#body').val();
+      var details = $('#details').val();
+      var image_or_video = $('#image_or_video')[0].files[0];  // Get the file data
 
-  var formData = new FormData();
-  formData.append('title', title);
-  formData.append('body', body);
-  formData.append('details', details);
-  formData.append('image_or_video', image_or_video);
+      var formData = new FormData();
+      formData.append('title', title);
+      formData.append('body', body);
+      formData.append('details', details);
+      formData.append('image_or_video', image_or_video);
 
-  $.ajax({
-    url: 'http://127.0.0.1:8000/api/blogs/',
-    type: 'POST',
-    headers: {
-      'Authorization': 'Bearer YOUR_ACCESS_TOKEN',  // Include your authentication token if needed
-    },
-    data: formData,
-    contentType: false,
-    processData: false,
-    success: function (data) {
-      console.log('Blog created successfully:', data);
-      // You can handle success as needed, e.g., redirect to a confirmation page
-    },
-    error: function (error) {
-      console.error('Error creating blog:', error);
-      // Handle error, e.g., show an alert to the user
+      $.ajax({
+        url: 'http://127.0.0.1:8000/api/blogs/',
+        type: 'POST',
+        headers: {
+          'Authorization': 'Bearer YOUR_ACCESS_TOKEN',  // Include your authentication token if needed
+        },
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (data) {
+          console.log('Blog created successfully:', data);
+          $('#feedback').html('<p class="success">Blog created successfully!</p>');
+          // You can handle success as needed, e.g., redirect to a confirmation page
+        },
+        error: function (error) {
+          console.error('Error creating blog:', error);
+          $('#feedback').html('<p class="error">Error creating blog. Please try again.</p>');
+          // Handle error, e.g., show an alert to the user
+        }
+      });
     }
-  });
-}
-
   </script>
       <!-- Left-aligned items -->
       <div style="top: 0;">

@@ -36,13 +36,53 @@
 
     <!-- Custom Styles -->
     <style>
-        @media screen and (min-width: 768px) {
+      body {
+          margin: 0;
+          padding: 0;
+          font-family: 'Open Sans', sans-serif;
+          background-color: #f5f5f5; /* Whitish Grey Background */
+      }
+
+      header {
+          background-color: #2c3e50; /* Dark Blue Header */
+          color: #ffffff; /* White Text */
+          padding: 15px;
+          text-align: center;
+          font-size: 24px;
+          font-weight: bold;
+      }
+
+      
+
+      #main h1 {
+          color: #333; /* Dark Grey Text */
+          text-align: center;
+      }
+
+      
+
+     
+
+      .card:hover {
+          transform: scale(1.05);
+      }
+
+      .card img {
+          width: 100%;
+          height: auto;
+      }
+
+      .card-body {
+          padding: 20px;
+      }
+
+      @media screen and (min-width: 768px) {
             #logo {
                 display: block;
                 margin-left: 300px;
             }
         }
-    </style>
+  </style>
 </head>
 
   <!-- ======= Mobile nav toggle button ======= -->
@@ -66,12 +106,10 @@
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="#hero"       class="nav-link text-dark scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="#about"      class="nav-link text-dark scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li><a href="#resume"     class="nav-link text-dark scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="blogs.html"  class="nav-link text-dark scrollto"><i class="bx bx-book-content"></i> <span> Blogs & Articles</span></a></li>
-          <li><a href="#contact"    class="nav-link text-dark scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
-          <li><a href="#services"   class="nav-link text-dark scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
+          <li><a href="index.html"       class="nav-link text-dark scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="book-appointment.html" class="nav-link text-dark scrollto active"><i class="bx bx-server"></i> <span>Book Appointment</span></a></li>
+          <li><a href="blogs.html" class="nav-link text-dark scrollto active"><i class="bx bx-book-content"></i> <span>Blogs & Articles</span></a></li>
+
         </ul>
       </nav><!-- .nav-menu -->
     </div>
@@ -82,7 +120,13 @@
 
 
   <main id="main">
-<h1>Cancer Awareness</h1>
+    <div style="background-color: #212431; color: #fff;">
+      <h1 class="mt-5 text-white p-3 ">Cancer Awareness</h1>
+     
+    </div>
+    <p class="m-2 p-2" style="font-family: 'Arial', sans-serif; font-size: 16px; line-height: 1.5; color: #333; margin-bottom: 20px;">
+      Dedicated to raising cancer awareness, we engage diverse organizations and media outlets, utilizing impactful health discussions and strategic media presence to amplify the crucial message and empower communities in the fight against cancer.    </p>
+</p>
     <!-- ======= Blog Section ======= -->
     <section class="" id="blogs-section" style="padding: 20px; margin-top: 20px; text-align: center;">
         <div id="blog-cards-container" class="row"></div>
@@ -93,11 +137,12 @@
             const ext = filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
             return videoExtensions.includes('.' + ext.toLowerCase());
         }
-    
+
         function displayBlogs() {
             $('#blog-cards-container').empty();
+
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/blogs/',
+                url: 'https://primus.pythonanywhere.com/api/blogs/',
                 type: 'GET',
                 success: function (blogs) {
                     console.log('Fetched blogs:', blogs); // Log the retrieved data
@@ -105,21 +150,30 @@
                         // Escape dynamic content to prevent XSS attacks
                         var sanitizedTitle = DOMPurify.sanitize(blog.title);
                         var sanitizedBody = DOMPurify.sanitize(blog.body);
-    
+
+                        const publishedDate = new Date(blog.created_at);
+                        const formattedDate = publishedDate.toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        });
+
                         var card = `
-                        <div class="col-lg-4 col-md-4 mb-4">
-                            <div class="card" data-aos="fade-up" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border: none;">
-                                ${isVideo(blog.image_or_video) ?
-                                    `<video src="${blog.image_or_video}" class="card-img-top" alt="Blog Video" style="height: 220px;" controls></video>` :
-                                    `<img src="${blog.image_or_video}" class="card-img-top" alt="Blog Image" style="height: 220px;">`
-                                }
-                                <div class="card-body">
-                                    <h5 class="card-title" style="font-weight:bold;">${sanitizedTitle}</h5>
-                                    <p class="card-text">${sanitizedBody}</p>
-                                    <a href="blog-details.html?id=${blog.id}" class="btn btn-primary">See more</a>
-                                </div>
-                            </div>
-                        </div>`;
+                            <div class="col-lg-4 col-md-4 mb-4">
+                                <a href="blog-details.html?id=${blog.id}" class="">
+                                    <div class="card" data-aos="fade-up" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border: none;">
+                                        ${isVideo(blog.image_or_video) ?
+                                            `<video src="${blog.image_or_video}" class="card-img-top" alt="Blog Video" style="height: 220px;" controls></video>` :
+                                            `<img src="${blog.image_or_video}" class="card-img-top" alt="Blog Image" style="height: 220px;">`
+                                        }
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="font-weight:bold;">${sanitizedTitle}</h5>
+                                            <p class="card-text">${formattedDate}</p>
+                                            <!-- Additional content as needed -->
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>`;
                         $('#blog-cards-container').append(card);
                     });
                 },
@@ -129,18 +183,18 @@
                 }
             });
         }
-    
+
         function viewBlogDetails(blogId) {
             window.location.href = 'blog-details.html?id=' + blogId;
         }
-    
+
         $(document).ready(function () {
             console.log('Document ready'); // Log when the document is ready
             displayBlogs();
         });
     </script>
       <!-- End Blog -->
-
+<p>embedded links</p>
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
