@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Blog Details - Dr Primus Ochieng</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- External Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- Favicon and Apple Touch Icon -->
+    <link rel="icon" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+    <!-- Vendor CSS -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+        @media screen and (min-width: 768px) {
+            #logo {
+                display: block;
+                margin-left: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <!-- Include your header content here if needed -->
+    </header>
+
+    <!-- Blog Details Section -->
+    <section id="blog-details-section" style="padding: 20px; margin-top: 20px; text-align: center;">
+        <div class="container">
+            <!-- Blog Details Content -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Display Blog Details -->
+                    <h2 class="mb-4">${blog.title}</h2>
+                    <p class="text-muted">Published on ${blog.created_at}</p>
+                    <div class="mb-4">
+                        <!-- Blog Image or Video (adjust based on your data structure) -->
+                        ${isVideo(blog.image_or_video) ?
+                            `<video src="${blog.image_or_video}" class="img-fluid" alt="Blog Video" controls></video>` :
+                            `<img src="${blog.image_or_video}" class="img-fluid" alt="Blog Image">`
+                        }
+                    </div>
+                    <div>
+                        <!-- Blog Body -->
+                        <p>${blog.body}</p>
+                    </div>
+                </div>
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <!-- Customize the sidebar content as needed -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Sidebar Section</h5>
+                            <p class="card-text">Content for the sidebar goes here...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <!-- Include your footer content here -->
+    </footer>
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/typed.js/typed.umd.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

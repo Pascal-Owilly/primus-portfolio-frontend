@@ -56,7 +56,7 @@
           <a href="https://web.facebook.com/profile.php?id=61553172440489" class="facebook"><i class="bx bxl-facebook"></i></a>
           <a href="https://www.instagram.com/oncologistprimus/" class="instagram"><i class="bx bxl-instagram"></i></a>
           <a href="https://www.linkedin.com/in/primus-ochieng-8385243b/?originalSubdomain=ke" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-          <a href="https://www.tiktok.com/@user6261383368082" class="titok"><i class="bx bxl-tiktok"></i></a>
+     .     <a href="https://www.tiktok.com/@user6261383368082" class="titok"><i class="bx bxl-tiktok"></i></a>
 
         </div>
       </div>
@@ -82,7 +82,7 @@
     </h1>
 
 
-   <!-- Include this script in the head section of your HTML file -->
+<!-- Include this script in the head section of your HTML file -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <!-- Your existing HTML code -->
@@ -90,6 +90,8 @@
 <!-- Payment confirmation message -->
 <p style="font-size: 20px; color: aliceblue;">Please confirm payment upon receiving
   <br> a push notification on your phone</p>
+
+
 
 <!-- Form to enter phone number -->
 <form id="paymentForm" style="max-width: 300px; margin: auto; text-align: center;">
@@ -105,11 +107,9 @@
   </button>
 </form>
 
-
-
-
 <!-- Add this script at the bottom of your HTML file -->
 <!-- Add this script at the bottom of your HTML file -->
+
 <script>
   function initiateMpesaPayment() {
     // Get the phone number entered by the user
@@ -118,7 +118,7 @@
     // Validate the phone number (add your own validation logic if needed)
     if (/^[0-9]{10,15}$/.test(phoneNumber)) {
       // Make an API request to fetch the amount based on the entered phone number
-      axios.get(`http://127.0.0.1:8000/api/get_amount/?phone_number=${phoneNumber}`)
+      axios.get(`https://primus.pythonanywhere.com/api/get_amount/?phone_number=${phoneNumber}`)
         .then(response => {
           // Check if the response contains the amount
           if (response.data.hasOwnProperty('amount')) {
@@ -126,7 +126,7 @@
             document.getElementById("amount").value = response.data.amount;
 
             // Make another API request to initiate the M-Pesa STK push with the entered phone number and fetched amount
-            axios.post('http://127.0.0.1:8000/api/initiate_payment/', { phone_number: phoneNumber, amount: response.data.amount })
+            axios.post('https://primus.pythonanywhere.com/api/initiate_payment/', { phone_number: phoneNumber, amount: response.data.amount })
               .then(response => {
                 // Handle the response, e.g., show success or failure message
                 if (response.data.success) {
